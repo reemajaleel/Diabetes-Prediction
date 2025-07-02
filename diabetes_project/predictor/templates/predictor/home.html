@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <style>
+        body { font-family: Arial; background: #f2f2f2; padding: 30px; }
+        .form-box { background: white; padding: 25px; max-width: 500px; margin: auto; box-shadow: 0 0 15px rgba(0,0,0,0.1); border-radius: 10px; }
+        h2 { text-align: center; color: #333; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        .result { margin-top: 20px; font-size: 18px; text-align: center; color: green; }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>Diabetes Risk Predictor</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div style="text-align:center;"><button type="submit">Predict</button></div>
+        </form>
+        {% if result %}
+            <div class="result">Prediction: <strong>{{ result }}</strong></div>
+        {% endif %}
+    </div>
+</body>
+</html>
